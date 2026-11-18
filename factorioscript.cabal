@@ -22,7 +22,7 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      AST
   other-modules:
       Paths_factorioscript
   autogen-modules:
