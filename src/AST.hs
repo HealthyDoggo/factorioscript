@@ -29,8 +29,8 @@ data IODecl = IODecl -- e.g. input "signal-A" input_a Int "Put base here"
 data Lit = LInt Integer | LBool Bool
     deriving (Show, Eq)
 
-data Pragma = TailAssert 
-    deriving(Show, Eq)
+data Pragma = TailAssert
+    deriving (Show, Eq)
 
 data Expr
     = Var Name
