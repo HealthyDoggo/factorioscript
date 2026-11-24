@@ -15,7 +15,7 @@ data Binop -- applies to any exprs, so covers all basic operators; both boolean 
     = Add | Sub | Mul | Div | Exp | Mod
     | Equal | NotEqual | Less | Greater | LessEq | GreaterEq
     | And | Or
-    deriving (Show, Eq)
+    deriving (Show, Eq, Ord)
 
 data IODecl = IODecl -- e.g. input "signal-A" input_a Int "Put base here"
     { ioDirection :: Direction
@@ -27,10 +27,10 @@ data IODecl = IODecl -- e.g. input "signal-A" input_a Int "Put base here"
     deriving (Show, Eq)
 
 data Lit = LInt Integer | LBool Bool
-    deriving (Show, Eq)
+    deriving (Show, Eq, Ord)
 
 data Pragma = TailAssert
-    deriving (Show, Eq)
+    deriving (Show, Eq, Ord)
 
 data Expr
     = Var Name
@@ -40,16 +40,16 @@ data Expr
     | If Expr Expr Expr
     | Let Bool [Def] Expr -- list of defs to allow for let ... and ... and ... in 
     | Pragma Pragma Expr
-    deriving (Show, Eq)
+    deriving (Show, Eq, Ord)
 
 data Def = Def -- function definition
     { defName   :: Name
     , defParams :: [Name]
     , defBody   :: Expr
-    } deriving (Show, Eq)
+    } deriving (Show, Eq, Ord)
 
 data Binding = Binding { bindRec :: Bool, bindDefs :: [Def] }
-    deriving (Show, Eq)
+    deriving (Show, Eq, Ord)
 
 data TopItem = TopDecl IODecl | TopBinding Binding -- Lists can only contain one type, so use an additive type for decls and bindings.
     deriving (Show, Eq)

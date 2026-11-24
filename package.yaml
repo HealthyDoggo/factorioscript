@@ -20,8 +20,9 @@ default-extensions:
   - OverloadedStrings
 
 dependencies:
-- base >= 4.7 && < 5
+- base >= 4.10 && < 5
 - text >= 2.0 && < 2.2
+- containers 
 ghc-options:
 - -Wall
 - -Wcompat
