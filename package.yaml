@@ -23,6 +23,7 @@ dependencies:
 - base >= 4.10 && < 5
 - text >= 2.0 && < 2.2
 - containers 
+- mtl
 ghc-options:
 - -Wall
 - -Wcompat
@@ -58,3 +59,4 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - factorioscript
+    - hspec
