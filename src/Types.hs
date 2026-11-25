@@ -41,3 +41,17 @@ prettyPrint (TVar (TV t))           = t
 prettyPrint (TArr arg@(TArr _ _) y) = T.concat ["(", prettyPrint arg, ")", " -> ", prettyPrint y] 
 -- above to show associativity when functions passed as arguments, e.g. (a -> b) -> c -> d
 prettyPrint (TArr x y)              = T.concat [prettyPrint x, " -> ", prettyPrint y] -- e.g. a -> b
+
+extend :: TypeEnv -> (Name, Scheme) -> TypeEnv
+extend (TypeEnv e) (n, s) = TypeEnv (insert n s e)
+
+remove :: TypeEnv -> Name -> TypeEnv
+remove (TypeEnv e) n = TypeEnv (delete n e)
+
+lookupEnv :: Name -> TypeEnv -> Maybe Scheme
+lookupEnv n (TypeEnv e) = Data.Map.lookup n e -- Data.Map specified to avoid Prelude clash
+
+emptyEnv :: TypeEnv
+emptyEnv = TypeEnv empty
+
+
